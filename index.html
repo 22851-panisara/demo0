@@ -1,122 +1,409 @@
-<!-- HEADER BAR -->
-<div style="background: linear-gradient(135deg, #1e40af, #3b82f6); padding: 35px 40px; color: #ffffff; position: relative;">
-  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-    <div>
-      <span style="background-color: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;">Student Profile</span>
-      <h1 style="margin: 10px 0 5px 0; font-size: 32px; font-weight: 700; letter-spacing: 0.5px;">ด.ญ.ปาณิสรา ทาดวงแดน</h1>
-      <p style="margin: 0; font-size: 18px; color: #bfdbfe; font-weight: 300;">ชื่อเล่น: <strong>พอมแพม</strong> | ชั้นมัธยมศึกษาปีที่ 3/2</p>
-    </div>
-    <div style="text-align: right; min-width: 150px;">
-      <div style="font-size: 20px; font-weight: 600; color: #ffffff;">โรงเรียนจอมทอง</div>
-      <div style="font-size: 14px; color: #93c5fd; margin-top: 2px;">จังหวัดเชียงใหม่</div>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card - พอมแพม</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6; /* Blue 500 */
+            --primary-dark: #1d4ed8; /* Blue 700 */
+            --primary-light: #dbeafe; /* Blue 100 */
+            --secondary: #10b981; /* Emerald 500 */
+            --bg-page: #f8fafc; /* Slate 50 */
+            --text-main: #334155; /* Slate 700 */
+            --text-light: #64748b; /* Slate 500 */
+            --white: #ffffff;
+            --border: #e2e8f0; /* Slate 200 */
+        }
 
-<!-- CONTENT BODY -->
-<div style="padding: 40px;">
-  
-  <!-- SECTION 1: PERSONAL & EDUCATION -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 35px;">
-    
-    <!-- ข้อมูลส่วนตัว -->
-    <div style="background-color: #f0f7ff; padding: 25px; border-radius: 16px; border: 1px solid #e0f2fe;">
-      <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 18px; font-size: 18px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #bae6fd; padding-bottom: 8px;">
-        👤 ข้อมูลส่วนตัว
-      </h3>
-      <div style="display: grid; grid-template-columns: 100px 1fr; row-gap: 12px; font-size: 15px; color: #334155;">
-        <div style="color: #64748b; font-weight: 500;">วันเกิด:</div>
-        <div style="font-weight: 600;">15 ธันวาคม 2554</div>
-        
-        <div style="color: #64748b; font-weight: 500;">เพศ / เลือด:</div>
-        <div>หญิง / กรุ๊ป O</div>
-        
-        <div style="color: #64748b; font-weight: 500;">จักรราศี:</div>
-        <div>พิจิก</div>
-        
-        <div style="color: #64748b; font-weight: 500;">ส่วนสูง:</div>
-        <div>154 ซม.</div>
-        
-        <div style="color: #64748b; font-weight: 500;">เพื่อนสนิท:</div>
-        <div style="color: #2563eb; font-weight: 600;">โบนัส</div>
-      </div>
-    </div>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    <!-- การเรียนและเป้าหมาย -->
-    <div style="background-color: #f0f7ff; padding: 25px; border-radius: 16px; border: 1px solid #e0f2fe;">
-      <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 18px; font-size: 18px; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #bae6fd; padding-bottom: 8px;">
-        📚 การเรียน & ความฝัน
-      </h3>
-      <div style="display: grid; grid-template-columns: 110px 1fr; row-gap: 12px; font-size: 15px; color: #334155;">
-        <div style="color: #64748b; font-weight: 500;">วิชาที่ชอบ:</div>
-        <div style="color: #16a34a; font-weight: 600;">วิทยาศาสตร์ 🔬</div>
+        /* สำหรับการพิมพ์ A4 (210mm x 297mm) */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+            .card-container {
+                box-shadow: none !important;
+                border: none !important;
+                width: 210mm !important;
+                min-height: 297mm !important; /* บังคับความสูง A4 */
+                margin: 0 !important;
+                border-radius: 0 !important;
+                /* ปรับขนาดฟอนต์/ระยะห่างตอนพิมพ์ถ้าต้องการให้พอดีหน้า */
+            }
+        }
+
+        .card-container {
+            background-color: var(--white);
+            width: 100%;
+            max-width: 800px; /* ขนาดใกล้เคียงความกว้าง A4 */
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        /* --- Header Section --- */
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 2.5rem;
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .header-title .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .header-title h1 {
+            margin: 0.75rem 0 0.25rem 0;
+            font-size: 2.25rem;
+            font-weight: 700;
+        }
+
+        .header-title p {
+            margin: 0;
+            font-size: 1.125rem;
+            color: var(--primary-light);
+            font-weight: 300;
+        }
+
+        .header-school {
+            text-align: right;
+        }
+
+        .header-school h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .header-school p {
+            margin: 0.25rem 0 0 0;
+            font-size: 0.875rem;
+            color: var(--primary-light);
+        }
+
+        /* --- Body Section --- */
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Info Boxes --- */
+        .info-box {
+            background-color: #f0fdfa; /* เปลี่ยนเป็นสีเขียวอ่อนๆ เล็กน้อยตามความชอบ */
+            background-color: var(--bg-page);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+        }
         
-        <div style="color: #64748b; font-weight: 500;">วิชาที่ยาก:</div>
-        <div style="color: #dc2626; font-weight: 600;">คณิตศาสตร์ 📐</div>
+        .info-box.education-box {
+             border-left: 4px solid var(--secondary); /* กล่องการเรียนใช้เส้นสีเขียว */
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            row-gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .highlight-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
         
-        <div style="color: #64748b; font-weight: 500;">ชมรม/กิจกรรม:</div>
-        <div>สวนพฤกษศาสตร์ 🌱</div>
-        
-        <div style="color: #64748b; font-weight: 500; grid-column: span 2; margin-top: 5px; border-top: 1px dashed #cbd5e1; padding-top: 10px;">อนาคตที่ต้องการเป็น:</div>
-        <div style="grid-column: span 2; background-color: #2563eb; color: #ffffff; padding: 8px 15px; border-radius: 8px; font-size: 16px; font-weight: 600; text-align: center; margin-top: 2px; box-shadow: 0 4px 10px rgba(37,99,235,0.15);">
-          🩺 พยาบาล (Nurse)
+        .highlight-red {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .highlight-green {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* --- Career Target --- */
+        .career-target {
+            grid-column: 1 / -1;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+        }
+
+        /* --- Lifestyle Section --- */
+        .lifestyle-section {
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lifestyle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .lifestyle-item {
+            background-color: var(--bg-page);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .lifestyle-label {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .lifestyle-value {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* --- Skills Section --- */
+        .skills-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-pill {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .skill-pill.primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+        }
+
+        /* --- Motto Section --- */
+        .motto-section {
+            background: linear-gradient(135deg, #eff6ff, var(--primary-light));
+            border-left: 6px solid var(--primary);
+            padding: 1.5rem 2rem;
+            border-radius: 0 1rem 1rem 0;
+            text-align: center;
+        }
+
+        .motto-label {
+            display: block;
+            color: var(--primary-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .motto-text {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Header -->
+        <header class="card-header">
+            <div class="header-title">
+                <span class="badge">Student Profile</span>
+                <h1>ด.ญ.ปาณิสรา ทาดวงแดน</h1>
+                <p>ชื่อเล่น: <strong>พอมแพม</strong> | ระดับชั้น ม.3/2</p>
+            </div>
+            <div class="header-school">
+                <h2>โรงเรียนจอมทอง</h2>
+                <p>จังหวัดเชียงใหม่</p>
+            </div>
+        </header>
+
+        <!-- Body -->
+        <div class="card-body">
+            
+            <!-- Personal & Education -->
+            <div class="grid-2-col">
+                
+                <!-- ข้อมูลส่วนตัว -->
+                <div class="info-box">
+                    <h3 class="section-title">👤 ข้อมูลส่วนตัว</h3>
+                    <div class="info-grid">
+                        <div class="info-label">วันเกิด:</div>
+                        <div class="info-value">15 ธันวาคม 2554</div>
+                        
+                        <div class="info-label">เพศ / เลือด:</div>
+                        <div class="info-value">หญิง / กรุ๊ป O</div>
+                        
+                        <div class="info-label">ราศี:</div>
+                        <div class="info-value">พิจิก</div>
+                        
+                        <div class="info-label">ส่วนสูง:</div>
+                        <div class="info-value">154 ซม.</div>
+                        
+                        <div class="info-label">ภูมิลำเนา:</div>
+                        <div class="info-value">เชียงใหม่</div>
+
+                        <div class="info-label">เพื่อนสนิท:</div>
+                        <div class="info-value highlight-text">โบนัส</div>
+                    </div>
+                </div>
+
+                <!-- การเรียนและความฝัน -->
+                <div class="info-box education-box">
+                    <h3 class="section-title" style="color: var(--secondary);">📚 การเรียน & เป้าหมาย</h3>
+                    <div class="info-grid">
+                        <div class="info-label">วิชาที่ชอบ:</div>
+                        <div class="info-value highlight-green">วิทยาศาสตร์ 🔬</div>
+                        
+                        <div class="info-label">วิชาที่ยาก:</div>
+                        <div class="info-value highlight-red">คณิตศาสตร์ 📐</div>
+                        
+                        <div class="info-label">ชมรม/กิจกรรม:</div>
+                        <div class="info-value">สวนพฤกษศาสตร์ 🌱</div>
+                        
+                        <div class="career-target">
+                            เป้าหมายอาชีพ: พยาบาล 🩺
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Lifestyle -->
+            <div class="lifestyle-section">
+                <h3 class="section-title">🎨 ไลฟ์สไตล์และความชอบ</h3>
+                <div class="lifestyle-grid">
+                    <div class="lifestyle-item">
+                        <span class="lifestyle-label">อาหารโปรด</span>
+                        <div class="lifestyle-value">ข้าวผัด 🍳</div>
+                    </div>
+                    <div class="lifestyle-item">
+                        <span class="lifestyle-label">สีโปรด</span>
+                        <div class="lifestyle-value highlight-green">สีเขียว 🟢</div>
+                    </div>
+                    <div class="lifestyle-item">
+                        <span class="lifestyle-label">งานอดิเรก</span>
+                        <div class="lifestyle-value">วาดรูป 🎨</div>
+                    </div>
+                    <div class="lifestyle-item">
+                        <span class="lifestyle-label">กีฬา</span>
+                        <div class="lifestyle-value">แบดมินตัน 🏸</div>
+                    </div>
+                    <div class="lifestyle-item">
+                        <span class="lifestyle-label">เพลงที่ชอบ</span>
+                        <div class="lifestyle-value">เพลงสตริง 🎵</div>
+                    </div>
+                    <div class="lifestyle-item">
+                        <span class="lifestyle-label">ซีรีส์/อนิเมะ</span>
+                        <div class="lifestyle-value">ซีรีส์จีน 🎬</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-section">
+                <h3 class="section-title" style="border:none; margin-bottom: 0.5rem;">🎯 ทักษะและความสามารถ (Skills)</h3>
+                <div class="skills-container">
+                    <span class="skill-pill primary">🏸 เล่นแบดมินตัน</span>
+                    <!-- สามารถเพิ่มทักษะอื่นๆ ที่สอดคล้องกับข้อมูลเพิ่มเติมได้ -->
+                    <span class="skill-pill">🎨 ทักษะการวาดรูป</span>
+                    <span class="skill-pill">🌿 ความรู้พฤกษศาสตร์</span>
+                </div>
+            </div>
+
+            <!-- Motto -->
+            <div class="motto-section">
+                <span class="motto-label">คติประจำใจ</span>
+                <p class="motto-text">" ความล้มเหลวคือบทเรียน "</p>
+            </div>
+
         </div>
-      </div>
     </div>
 
-  </div>
-
-  <!-- SECTION 2: LIFESTYLE & PREFERENCES -->
-  <div style="border: 1px solid #e2e8f0; padding: 25px; border-radius: 16px; margin-bottom: 35px;">
-    <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 20px; font-size: 18px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">
-      🎨 ไลฟ์สไตล์และความชอบ
-    </h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; font-size: 15px;">
-      <div style="background-color: #f8fafc; padding: 12px 15px; border-radius: 10px;">
-        <span style="color: #64748b; block: thin;">อาหารโปรด</span>
-        <div style="font-weight: 600; color: #1e293b; margin-top: 3px;">ข้าวผัด 🍳</div>
-      </div>
-      <div style="background-color: #f8fafc; padding: 12px 15px; border-radius: 10px;">
-        <span style="color: #64748b; block: thin;">สีโปรด</span>
-        <div style="font-weight: 600; color: #16a34a; margin-top: 3px;">สีเขียว 🟢</div>
-      </div>
-      <div style="background-color: #f8fafc; padding: 12px 15px; border-radius: 10px;">
-        <span style="color: #64748b; block: thin;">งานอดิเรก</span>
-        <div style="font-weight: 600; color: #1e293b; margin-top: 3px;">วาดรูป 🎨</div>
-      </div>
-      <div style="background-color: #f8fafc; padding: 12px 15px; border-radius: 10px;">
-        <span style="color: #64748b; block: thin;">แนวเพลงที่ชอบ</span>
-        <div style="font-weight: 600; color: #1e293b; margin-top: 3px;">เพลงสตริง 🎵</div>
-      </div>
-      <div style="background-color: #f8fafc; padding: 12px 15px; border-radius: 10px; grid-column: span 2;">
-        <span style="color: #64748b; block: thin;">ซีรีส์ / อนิเมะ</span>
-        <div style="font-weight: 600; color: #1e293b; margin-top: 3px;">ซีรีส์จีน 🎬</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 3: SKILLS (PILLS/TAGS) -->
-  <div style="margin-bottom: 40px;">
-    <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 15px; font-size: 18px;">🎯 ทักษะและความสามารถ (Skills)</h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-      <span style="background-color: #2563eb; color: #ffffff; padding: 8px 18px; border-radius: 30px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 10px rgba(37,99,235,0.15); display: inline-flex; align-items: center; gap: 6px;">
-        🏸 เล่นแบดมินตัน
-      </span>
-      <span style="background-color: #e0f2fe; color: #0369a1; padding: 8px 18px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px;">
-        🎨 ทักษะการวาดรูป
-      </span>
-      <span style="background-color: #e0f2fe; color: #0369a1; padding: 8px 18px; border-radius: 30px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px;">
-        🌿 งานสวนพฤกษศาสตร์และวิทยาศาสตร์
-      </span>
-    </div>
-  </div>
-
-  <!-- SECTION 4: MOTTO -->
-  <div style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 6px solid #2563eb; padding: 20px 30px; border-radius: 0 16px 16px 0; text-align: center;">
-    <span style="color: #1d4ed8; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 6px;">คติประจำใจ</span>
-    <p style="margin: 0; font-size: 22px; font-weight: 700; color: #1e3a8a; font-style: italic;">
-      " ความล้มเหลวคือบทเรียน "
-    </p>
-  </div>
-
-</div>
+</body>
+</html>

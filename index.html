@@ -1,63 +1,4 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Card - พอมแพม</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #3b82f6; /* Blue 500 */
-            --primary-dark: #1d4ed8; /* Blue 700 */
-            --primary-light: #dbeafe; /* Blue 100 */
-            --secondary: #10b981; /* Emerald 500 */
-            --bg-page: #f8fafc; /* Slate 50 */
-            --text-main: #334155; /* Slate 700 */
-            --text-light: #64748b; /* Slate 500 */
-            --white: #ffffff;
-            --border: #e2e8f0; /* Slate 200 */
-        }
-
-        body {
-            font-family: 'Kanit', sans-serif;
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* สำหรับการพิมพ์ A4 (210mm x 297mm) */
-        @media print {
-            @page {
-                size: A4 portrait;
-                margin: 0;
-            }
-            body {
-                background-color: white;
-                padding: 0;
-                margin: 0;
-            }
-            .card-container {
-                box-shadow: none !important;
-                border: none !important;
-                width: 210mm !important;
-                min-height: 297mm !important; /* บังคับความสูง A4 */
-                margin: 0 !important;
-                border-radius: 0 !important;
-                /* ปรับขนาดฟอนต์/ระยะห่างตอนพิมพ์ถ้าต้องการให้พอดีหน้า */
-            }
-        }
-
-        .card-container {
-            background-color: var(--white);
-            width: 100%;
-            max-width: 800px; /* ขนาดใกล้เคียงความกว้าง A4 */
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             border: 1px solid var(--border);
         }
@@ -68,9 +9,34 @@
             padding: 2.5rem;
             color: var(--white);
             display: flex;
+            align-items: center; /* ปรับให้อยู่กึ่งกลางแนวตั้ง */
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        /* สไตล์สำหรับรูปโปรไฟล์ */
+        .profile-img-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-content-wrapper {
+            display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
+            flex: 1;
             gap: 1.5rem;
         }
 
@@ -127,7 +93,6 @@
 
         /* --- Info Boxes --- */
         .info-box {
-            background-color: #f0fdfa; /* เปลี่ยนเป็นสีเขียวอ่อนๆ เล็กน้อยตามความชอบ */
             background-color: var(--bg-page);
             padding: 1.5rem;
             border-radius: 1rem;
@@ -136,7 +101,7 @@
         }
         
         .info-box.education-box {
-             border-left: 4px solid var(--secondary); /* กล่องการเรียนใช้เส้นสีเขียว */
+             border-left: 4px solid var(--secondary);
         }
 
         .section-title {
@@ -244,7 +209,7 @@
             background-color: var(--primary-light);
             color: var(--primary-dark);
             padding: 0.5rem 1.25rem;
-            border-radius: 9999px; /* Pill shape */
+            border-radius: 9999px;
             font-size: 0.9rem;
             font-weight: 500;
             display: inline-flex;
@@ -285,23 +250,45 @@
             color: var(--primary-dark);
             font-style: italic;
         }
+
+        /* สำหรับหน้าจอขนาดเล็ก */
+        @media (max-width: 600px) {
+            .header-content-wrapper {
+                justify-content: center;
+                text-align: center;
+            }
+            .header-school {
+                text-align: center;
+            }
+            .card-header {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
-<img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5LJFnz0POd7zd5bGdjDarfodRPOwroZUQXqP2bUasieyDmLCaDt.jpg" 
-         alt="รูปหมาน่ารัก" 
-         class="responsive-image">
+
     <div class="card-container">
         <!-- Header -->
         <header class="card-header">
-            <div class="header-title">
-                <span class="badge">Student Profile</span>
-                <h1>ด.ญ.ปาณิสรา ทาดวงแดน</h1>
-                <p>ชื่อเล่น: <strong>พอมแพม</strong> | ระดับชั้น ม.3/2</p>
+            <!-- ส่วนของรูปภาพที่เพิ่มเข้ามา -->
+            <div class="profile-img-container">
+                <img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5LJFnz0POd7zd5bGdjDarfodRPOwroZUQXqP2bUasieyDmLCaDt.jpg" 
+                     alt="รูปหมาน่ารัก" 
+                     class="profile-img">
             </div>
-            <div class="header-school">
-                <h2>โรงเรียนจอมทอง</h2>
-                <p>จังหวัดเชียงใหม่</p>
+
+            <!-- ส่วนข้อมูลบน Header -->
+            <div class="header-content-wrapper">
+                <div class="header-title">
+                    <span class="badge">Student Profile</span>
+                    <h1>ด.ญ.ปาณิสรา ทาดวงแดน</h1>
+                    <p>ชื่อเล่น: <strong>พอมแพม</strong> | ระดับชั้น ม.3/2</p>
+                </div>
+                <div class="header-school">
+                    <h2>โรงเรียนจอมทอง</h2>
+                    <p>จังหวัดเชียงใหม่</p>
+                </div>
             </div>
         </header>
 
@@ -392,7 +379,6 @@
                 <h3 class="section-title" style="border:none; margin-bottom: 0.5rem;">🎯 ทักษะและความสามารถ (Skills)</h3>
                 <div class="skills-container">
                     <span class="skill-pill primary">🏸 เล่นแบดมินตัน</span>
-                    <!-- สามารถเพิ่มทักษะอื่นๆ ที่สอดคล้องกับข้อมูลเพิ่มเติมได้ -->
                     <span class="skill-pill">🎨 ทักษะการวาดรูป</span>
                     <span class="skill-pill">🌿 ความรู้พฤกษศาสตร์</span>
                 </div>

@@ -45,7 +45,7 @@
                 box-shadow: none !important;
                 border: none !important;
                 width: 210mm !important;
-                min-height: 297mm !important; /* บังคับความสูง A4 */
+                min-height: 297mm !important;
                 margin: 0 !important;
                 border-radius: 0 !important;
             }
@@ -54,7 +54,7 @@
         .card-container {
             background-color: var(--white);
             width: 100%;
-            max-width: 800px; /* ขนาดใกล้เคียงความกว้าง A4 */
+            max-width: 800px;
             border-radius: 1.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             overflow: hidden;
@@ -67,22 +67,23 @@
             padding: 2.5rem;
             color: var(--white);
             display: flex;
-            flex-direction: column; /* จัดเรียงเป็นแนวตั้งเพื่อให้รูปอยู่บนสุด */
-            align-items: center;
+            flex-direction: column; /* เปลี่ยนเป็นจัดเรียงแนวตั้งเพื่อให้รูปอยู่บน */
+            align-items: center; /* จัดให้อยู่กึ่งกลาง */
+            text-align: center;
             gap: 1.5rem;
         }
 
-        /* CSS สำหรับรูปโปรไฟล์ใหม่ */
-        .profile-avatar img {
+        /* เพิ่ม CSS สำหรับรูปโปรไฟล์ */
+        .profile-avatar {
             width: 140px;
             height: 140px;
-            border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
-            object-fit: cover; /* จัดการสัดส่วนไม่ให้รูปเบี้ยว */
+            border-radius: 50%; /* ทำให้เป็นวงกลม */
+            object-fit: cover; /* ป้องกันรูปเบี้ยว */
             border: 4px solid var(--white); /* กรอบสีขาว */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เงาใต้รูป */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เพิ่มมิติด้วยเงา */
+            background-color: var(--white);
         }
 
-        /* CSS สำหรับจัดระเบียบข้อความส่วนหัว */
         .header-content {
             width: 100%;
             display: flex;
@@ -90,6 +91,7 @@
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 1.5rem;
+            text-align: left; /* ให้ข้อความด้านล่างซ้าย-ขวากลับไปชิดขอบ */
         }
 
         .header-title .badge {
@@ -153,7 +155,7 @@
         }
         
         .info-box.education-box {
-             border-left: 4px solid var(--secondary); /* กล่องการเรียนใช้เส้นสีเขียว */
+             border-left: 4px solid var(--secondary);
         }
 
         .section-title {
@@ -261,7 +263,7 @@
             background-color: var(--primary-light);
             color: var(--primary-dark);
             padding: 0.5rem 1.25rem;
-            border-radius: 9999px; /* Pill shape */
+            border-radius: 9999px;
             font-size: 0.9rem;
             font-weight: 500;
             display: inline-flex;
@@ -308,10 +310,9 @@
 <body>
     <div class="card-container">
         <header class="card-header">
-            
-            <div class="profile-avatar">
-                <img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5LJFnz0POd7zd5bGdjDarfodRPOwroZUQXqP2bUasieyDmLCaDt.jpg" alt="รูปโปรไฟล์พอมแพม">
-            </div>
+            <img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5LJFnz0POd7zd5bGdjDarfodRPOwroZUQXqP2bUasieyDmLCaDt.jpg" 
+                 alt="รูปโปรไฟล์" 
+                 class="profile-avatar">
 
             <div class="header-content">
                 <div class="header-title">
@@ -324,7 +325,6 @@
                     <p>จังหวัดเชียงใหม่</p>
                 </div>
             </div>
-
         </header>
 
         <div class="card-body">

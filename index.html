@@ -1,5 +1,4 @@
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +44,7 @@
                 box-shadow: none !important;
                 border: none !important;
                 width: 210mm !important;
-                min-height: 297mm !important;
+                min-height: 297mm !important; 
                 margin: 0 !important;
                 border-radius: 0 !important;
             }
@@ -67,20 +66,19 @@
             padding: 2.5rem;
             color: var(--white);
             display: flex;
-            flex-direction: column; /* เปลี่ยนเป็นจัดเรียงแนวตั้งเพื่อให้รูปอยู่บน */
+            flex-direction: column; /* เปลี่ยนให้เรียงจากบนลงล่าง */
             align-items: center; /* จัดให้อยู่กึ่งกลาง */
-            text-align: center;
             gap: 1.5rem;
         }
 
-        /* เพิ่ม CSS สำหรับรูปโปรไฟล์ */
+        /* CSS สำหรับรูปโปรไฟล์ที่เพิ่มเข้ามาใหม่ */
         .profile-avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%; /* ทำให้เป็นวงกลม */
-            object-fit: cover; /* ป้องกันรูปเบี้ยว */
-            border: 4px solid var(--white); /* กรอบสีขาว */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เพิ่มมิติด้วยเงา */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             background-color: var(--white);
         }
 
@@ -91,7 +89,6 @@
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 1.5rem;
-            text-align: left; /* ให้ข้อความด้านล่างซ้าย-ขวากลับไปชิดขอบ */
         }
 
         .header-title .badge {
@@ -306,14 +303,14 @@
         }
     </style>
 </head>
-
 <body>
+
     <div class="card-container">
         <header class="card-header">
             <img src="https://image.bangkokbiznews.com/uploads/images/contents/w1024/2024/06/PQgLYFjV9koxXPCEHypz.webp?x-image-process=style/lg-webp" 
                  alt="รูปโปรไฟล์" 
                  class="profile-avatar">
-
+                 
             <div class="header-content">
                 <div class="header-title">
                     <span class="badge">Student Profile</span>
@@ -420,5 +417,6 @@
 
         </div>
     </div>
+
 </body>
 </html>
